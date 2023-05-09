@@ -170,7 +170,7 @@ class _SpielState extends State<Spiel> {
     }
     
     Color defaultColor = const Color.fromARGB(0, 0, 0, 0);
-    /*
+
     Color leftColor = teamColors[widget.homeTeam]!;
     leftColor = leftColor.withAlpha(175);
     Color rightColor;
@@ -180,13 +180,13 @@ class _SpielState extends State<Spiel> {
       rightColor = secondColors[widget.awayTeam]!;
     }
     rightColor = rightColor.withAlpha(175);
-    */
+
 
     if(deviceWidth > 600){
-      return getPCLayout(defaultColor, defaultColor, defaultColor, middle);
+      return getPCLayout(defaultColor, leftColor, rightColor, middle);
     }
     else{
-      return getHandyLayout(defaultColor, defaultColor, defaultColor, middle);
+      return getHandyLayout(defaultColor, leftColor, rightColor, middle);
     }
     
   }
