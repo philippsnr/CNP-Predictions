@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 int vis = 230;
 
 var teamColors = {
+  // Bundesliga:
   "FC Bayern München": Color.fromARGB(vis, 237, 18, 40),
   "SC Freiburg": Color.fromARGB(vis, 228, 0, 43),
   "1. FC Union Berlin": Color.fromARGB(vis, 212, 1, 29),
@@ -21,6 +22,16 @@ var teamColors = {
   "Hertha BSC": Color.fromARGB(vis, 0, 82, 158),
   "FC Schalke 04": Color.fromARGB(vis, 0, 56, 120),
   "VfL Bochum 1848": Color.fromARGB(vis, 0, 101, 174),
+
+  //Premier League:
+  "Manchester City": Color.fromARGB(vis, 84, 175, 228),
+  "Arsenal": Color.fromARGB(vis, 238,0,23),
+  "Newcastle": Color.fromARGB(vis, 0, 0, 0),
+  "Manchester United": Color.fromARGB(vis, 247,0,0),
+  "Liverpool": Color.fromARGB(vis, 228,0,25),
+  "Tottenham": Color.fromARGB(vis, 12,33,85),
+  "Brighton": Color.fromARGB(vis, 0, 95, 176),
+
 };
 
 var secondColors = {
