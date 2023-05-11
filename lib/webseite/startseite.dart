@@ -1,5 +1,8 @@
 import 'package:cnppredictions/webseite/bundesliga.dart';
+import 'package:cnppredictions/webseite/la_liga.dart';
+import 'package:cnppredictions/webseite/ligue_1.dart';
 import 'package:cnppredictions/webseite/premierleague.dart';
+import 'package:cnppredictions/webseite/serie_a.dart';
 import 'package:cnppredictions/webseite/webseite.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -289,7 +292,7 @@ Widget Competitions(context){
           SizedBox(height: 35),
           TextButton(
             onPressed: (){
-              
+              openPage(context, La_Liga.route);
             },
             child: Container(
               decoration: BoxDecoration(
@@ -310,7 +313,7 @@ Widget Competitions(context){
           SizedBox(height: 35),
           TextButton(
             onPressed: (){
-              
+              openPage(context, Serie_A.route);
             },
             child: Container(
               decoration: BoxDecoration(
@@ -331,7 +334,7 @@ Widget Competitions(context){
           SizedBox(height: 35),
           TextButton(
             onPressed: (){
-
+              openPage(context, Ligue_1.route);
             },
             child: Container(
               decoration: BoxDecoration(

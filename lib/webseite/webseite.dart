@@ -1,5 +1,8 @@
 import 'package:cnppredictions/webseite/bundesliga.dart';
+import 'package:cnppredictions/webseite/la_liga.dart';
+import 'package:cnppredictions/webseite/ligue_1.dart';
 import 'package:cnppredictions/webseite/premierleague.dart';
+import 'package:cnppredictions/webseite/serie_a.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'startseite.dart';
@@ -33,6 +36,9 @@ class _BLPredictionState extends State<BLPrediction> {
         Datenschutzseite.route:(context) => const Datenschutzseite(),
         Bundesliga.route:(context) => const Bundesliga(),
         PremierLeague.route:(context) => const PremierLeague(),
+        Serie_A.route: (context) => const Serie_A(),
+        La_Liga.route:(context) => const La_Liga(),
+        Ligue_1.route:(context) => const Ligue_1(),
       },
       title: 'CNP-Predictions',
       theme: ThemeData(primaryColor: Colors.black),
@@ -41,7 +47,7 @@ class _BLPredictionState extends State<BLPrediction> {
 }
 
 AppBar getAppbar(context) {
-  if (deviceWidth > 600) {
+  if (deviceWidth > 1000) {
     return getAppbarPC(context);
   } else {
     return getAppbarHandy(context);
@@ -90,19 +96,19 @@ AppBar getAppbarPC(context) {
       SizedBox(width: 20),
       TextButton(
           onPressed: () {
-            
+            openPage(context, La_Liga.route);
           },
           child: Text("La Liga", style: style)),
       SizedBox(width: 20),
       TextButton(
           onPressed: () {
-            
+            openPage(context, Serie_A.route);
           },
           child: Text("Serie A", style: style)),
       SizedBox(width: 20),
       TextButton(
           onPressed: () {
-            
+            openPage(context, Ligue_1.route);
           },
           child: Text("Ligue 1", style: style)),
       SizedBox(width: 20),

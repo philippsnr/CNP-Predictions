@@ -5,16 +5,16 @@ import 'package:flutter/material.dart';
 import 'package:requests/requests.dart';
 import 'liga.dart';
 
-class Bundesliga extends Liga {
-  const Bundesliga({super.key});
-  static const String route = "/bundesliga";
+class La_Liga extends Liga {
+  const La_Liga({super.key});
+  static const String route = "/la-liga";
 
   @override
-  State<Bundesliga> createState() => _BundesligaState();
+  State<La_Liga> createState() => _La_LigaState();
 
   Future<int> getAktuellenSpieltag() async {
     final response = await Requests.get(
-        "https://proxy.cnp-predictions.de/get.php?url=${Uri.encodeFull("https://api.football-data.org/v4/competitions/BL1")}",
+        "https://proxy.cnp-predictions.de/get.php?url=${Uri.encodeFull("https://api.football-data.org/v4/competitions/PD")}",
         headers: {"Access-Control-Allow-Origin": "*"});
     if (response.statusCode == 200) {
       // Parse JSON data and return a list of FootballResults
@@ -30,9 +30,9 @@ class Bundesliga extends Liga {
   }
 }
 
-class _BundesligaState extends State<Bundesliga> {
+class _La_LigaState extends State<La_Liga> {
   @override
   Widget build(BuildContext context) {
-    return Container(child: Spieltag2(leagueID: 'BL1', league: Bundesliga()));
+    return Container(child: Spieltag2(leagueID: 'PD', league: La_Liga()));
   }
 }
