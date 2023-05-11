@@ -232,7 +232,7 @@ class _SpielState extends State<Spiel> {
                   textAlign: TextAlign.right,
                 )),
             const SizedBox(width: 75),
-            Image.asset("assets/images/trikots/${teamTrikots[widget.awayTeam]}.png"),
+            Image.asset("assets/images/prem/${teamTrikots[widget.awayTeam]}.png"),
           ],
         ),
       ),
