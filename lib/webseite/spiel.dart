@@ -1,5 +1,5 @@
 // ignore_for_file: non_constant_identifier_names
-
+import 'trikots.dart';
 import 'farben.dart';
 import 'webseite.dart';
 import 'package:flutter/material.dart';
@@ -85,7 +85,7 @@ class _SpielState extends State<Spiel> {
           Text("${widget.homeScore} : ${widget.awayScore}", style: textStyle),
           const SizedBox(height: 5),
           MaterialButton(
-              disabledColor: Colors.green,
+              disabledColor: Color.fromARGB(255, 84, 17, 145),
               onPressed: null,
               child: SizedBox(
                 width: 180,
@@ -101,7 +101,7 @@ class _SpielState extends State<Spiel> {
           Text(widget.Uhrzeit, style: textStyle),
           SizedBox(height: 5),
           MaterialButton(
-              color: Colors.green,
+              color: Color.fromARGB(255, 84, 17, 145),
               onPressed: () {
                 setState(() {
                   widget.status = "LOADING";
@@ -136,7 +136,7 @@ class _SpielState extends State<Spiel> {
                         style: textStyle),
                     const SizedBox(height: 5),
                     MaterialButton(
-                        disabledColor: Colors.green,
+                        disabledColor: Color.fromARGB(255, 84, 17, 145),
                         onPressed: null,
                         child: SizedBox(
                           width: 180,
@@ -158,7 +158,7 @@ class _SpielState extends State<Spiel> {
           Text("${widget.homeScore} : ${widget.awayScore}", style: textStyle),
           const SizedBox(height: 5),
           MaterialButton(
-              disabledColor: Colors.green,
+              disabledColor: Colors.purple,
               onPressed: null,
               child: SizedBox(
                 width: 180,
@@ -212,6 +212,7 @@ class _SpielState extends State<Spiel> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Image.asset("assets/images/prem/${teamTrikots[widget.homeTeam]}.png"),
             const SizedBox(width: 75),
             SizedBox(
                 width: 250,
@@ -231,6 +232,7 @@ class _SpielState extends State<Spiel> {
                   textAlign: TextAlign.right,
                 )),
             const SizedBox(width: 75),
+            Image.asset("assets/images/trikots/${teamTrikots[widget.awayTeam]}.png"),
           ],
         ),
       ),
