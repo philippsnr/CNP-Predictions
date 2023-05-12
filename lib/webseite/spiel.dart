@@ -1,6 +1,5 @@
-// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: non_constant_identifier_names, must_be_immutable
 import 'trikots.dart';
-import 'farben.dart';
 import 'webseite.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
@@ -19,7 +18,7 @@ class Spiel extends StatefulWidget {
   String status;
   int spieltag;
 
-  Spiel({
+  Spiel({super.key, 
     required this.homeTeam,
     required this.homeId,
     required this.awayTeam,
@@ -85,7 +84,7 @@ class _SpielState extends State<Spiel> {
           Text("${widget.homeScore} : ${widget.awayScore}", style: textStyle),
           const SizedBox(height: 5),
           MaterialButton(
-              disabledColor: Color.fromARGB(255, 84, 17, 145),
+              disabledColor: const Color.fromARGB(255, 84, 17, 145),
               onPressed: null,
               child: SizedBox(
                 width: 100,
@@ -99,9 +98,10 @@ class _SpielState extends State<Spiel> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(widget.Uhrzeit, style: textStyle),
-          SizedBox(height: 5),
+          const SizedBox(height: 5),
           MaterialButton(
-              color: Color.fromARGB(255, 84, 17, 145),
+            padding: const EdgeInsets.all(0),
+              color: const Color.fromARGB(255, 84, 17, 145),
               onPressed: () {
                 setState(() {
                   widget.status = "LOADING";
@@ -122,7 +122,7 @@ class _SpielState extends State<Spiel> {
           switch (snapshot.connectionState) {
             case ConnectionState.none:
             case ConnectionState.waiting:
-              return const GFLoader(type: GFLoaderType.android);
+              return const GFLoader(type: GFLoaderType.android, androidLoaderColor: AlwaysStoppedAnimation<Color>(Color.fromARGB(255, 84, 17, 145)));
             default:
               if (snapshot.hasError) {
                 return Center(
@@ -136,7 +136,7 @@ class _SpielState extends State<Spiel> {
                         style: textStyle),
                     const SizedBox(height: 5),
                     MaterialButton(
-                        disabledColor: Color.fromARGB(255, 84, 17, 145),
+                        disabledColor: const Color.fromARGB(255, 84, 17, 145),
                         onPressed: null,
                         child: SizedBox(
                           width: 100,
@@ -178,65 +178,79 @@ class _SpielState extends State<Spiel> {
     
   }
 
-  Container getPCLayout(middle){
-    return Container(
-      child: SizedBox(
-        height: 60,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset("assets/images/trikots/${teamTrikots[widget.homeTeam]}.png"),
-            const SizedBox(width: 75),
-            SizedBox(
-                width: 250,
-                child: Text(
-                  widget.homeTeam,
-                  style: const TextStyle(color: Colors.white, fontSize: 15),
-                  textAlign: TextAlign.left,
-                )),
-            const SizedBox(width: 50),
-            SizedBox(width: 140, child: middle),
-            const SizedBox(width: 50),
-            SizedBox(
-                width: 250,
-                child: Text(
-                  widget.awayTeam,
-                  style: const TextStyle(color: Colors.white, fontSize: 15),
-                  textAlign: TextAlign.right,
-                )),
-            const SizedBox(width: 75),
-            Image.asset("assets/images/trikots/${teamTrikots[widget.awayTeam]}.png"),
-          ],
-        ),
+  SizedBox getPCLayout(middle){
+    return SizedBox(
+      height: 60,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset("assets/images/trikots/${teamTrikots[widget.homeTeam]}.png"),
+          const SizedBox(width: 75),
+          SizedBox(
+              width: 250,
+              child: Text(
+                widget.homeTeam,
+                style: const TextStyle(color: Colors.white, fontSize: 15),
+                textAlign: TextAlign.left,
+              )),
+          const SizedBox(width: 50),
+          SizedBox(width: 140, child: middle),
+          const SizedBox(width: 50),
+          SizedBox(
+              width: 250,
+              child: Text(
+                widget.awayTeam,
+                style: const TextStyle(color: Colors.white, fontSize: 15),
+                textAlign: TextAlign.right,
+              )),
+          const SizedBox(width: 75),
+          Image.asset("assets/images/trikots/${teamTrikots[widget.awayTeam]}.png"),
+        ],
       ),
     );
   }
 
-  Container getHandyLayout(middle){
-    return Container(
-      child: Column(
-        children: [
-          Text(
-            "${widget.homeTeam} - ${widget.awayTeam}",
-            style: const TextStyle(color: Colors.white, fontSize: 15),
-          ),
-          SizedBox(height: 15),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+  Row getHandyLayout(middle){
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        SizedBox(
+          width: 0.4 * deviceWidth,
+          child: Column(
             children: [
-              SizedBox(
-                width: 40,
-                child: Image.asset("assets/images/prem/${teamTrikots[widget.homeTeam]}.png")
+              Text(
+                widget.homeTeam,
+                style: const TextStyle(color: Colors.white, fontSize: 15)
               ),
-              middle,
+              const SizedBox(height: 5),
               SizedBox(
-                width: 40,
-                child: Image.asset("assets/images/prem/${teamTrikots[widget.awayTeam]}.png")
+                width: 50,
+                child: Image.asset("assets/images/trikots/${teamTrikots[widget.homeTeam]}.png")
               ),
             ],
-          )
-        ],
-      ),
+          ),
+        ),
+        SizedBox(
+          width: 0.2 * deviceWidth,
+          child: middle,
+        ),
+        SizedBox(
+          width: 0.4 * deviceWidth,
+          child: Column(
+            children: [
+              Text(
+                widget.awayTeam,
+                style: const TextStyle(color: Colors.white, fontSize: 15)
+              ),
+              const SizedBox(height: 5),
+              SizedBox(
+                width: 50,
+                child: Image.asset("assets/images/trikots/${teamTrikots[widget.awayTeam]}.png")
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }

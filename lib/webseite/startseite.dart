@@ -1,8 +1,10 @@
-import 'package:cnppredictions/webseite/bundesliga.dart';
-import 'package:cnppredictions/webseite/la_liga.dart';
-import 'package:cnppredictions/webseite/ligue_1.dart';
-import 'package:cnppredictions/webseite/premierleague.dart';
-import 'package:cnppredictions/webseite/serie_a.dart';
+// ignore_for_file: non_constant_identifier_names
+
+import 'ligen/bundesliga.dart';
+import 'ligen/premierleague.dart';
+import 'ligen/serie_a.dart';
+import 'ligen/ligue_1.dart';
+import 'ligen/la_liga.dart';
 import 'package:cnppredictions/webseite/webseite.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -30,14 +32,12 @@ class Startseite extends StatefulWidget {
 class _StartseiteState extends State<Startseite> {
   @override
   Widget build(BuildContext context) {
-    TextStyle style =
-        TextStyle(color: Color.fromARGB(255, 183, 111, 250), fontSize: 18);
     updateDeviceSize(context);
     Widget balken = SizedBox(
       child: Container(
           width: deviceWidth,
           height: 5,
-          color: Color.fromARGB(255, 84, 17, 145)),
+          color: const Color.fromARGB(255, 84, 17, 145)),
     );
     return Scaffold(
       appBar: getAppbar(context),
@@ -108,7 +108,7 @@ class _StartseiteState extends State<Startseite> {
                   width: 130,
                   height: 40,
                   child: Container(
-                      color: Color.fromARGB(255, 84, 17, 145),
+                      color: const Color.fromARGB(255, 84, 17, 145),
                       child: Center(child: Html(data: zuDenSpielen)))),
             )
           ],
@@ -240,7 +240,7 @@ Widget DataProtection(context) {
 }
 
 Widget Competitions(context){
-  TextStyle style = TextStyle(fontSize: 20 ,color: Colors.white);
+  TextStyle style = const TextStyle(fontSize: 20 ,color: Colors.white);
   return SizedBox(
     width: deviceWidth,
     height: deviceHeight,
@@ -253,7 +253,7 @@ Widget Competitions(context){
               openPage(context, Bundesliga.route);
             },
             child: Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 image: DecorationImage(image: AssetImage("assets/images/flags/deutschland.png"), fit: BoxFit.fill),
               ),
               child: SizedBox(
@@ -262,19 +262,19 @@ Widget Competitions(context){
                 child: Container(
                   width: 200,
                   height: 70,
-                  color: Color.fromARGB(150, 0, 0, 0),
+                  color: const Color.fromARGB(150, 0, 0, 0),
                   child: Center(child: Text("Bundesliga", style: style)),
                 )
                 ),
             ),
           ),
-          SizedBox(height: 35),
+          const SizedBox(height: 35),
           TextButton(
             onPressed: (){
               openPage(context, PremierLeague.route);
             },
             child: Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 image: DecorationImage(image: AssetImage("assets/images/flags/england.png"), fit: BoxFit.fill),
               ),
               child: SizedBox(
@@ -283,19 +283,19 @@ Widget Competitions(context){
                 child: Container(
                   width: 200,
                   height: 70,
-                  color: Color.fromARGB(150, 0, 0, 0),
+                  color: const Color.fromARGB(150, 0, 0, 0),
                   child: Center(child: Text("Premier League", style: style)),
                 )
               ),
             ),
           ),
-          SizedBox(height: 35),
+          const SizedBox(height: 35),
           TextButton(
             onPressed: (){
               openPage(context, La_Liga.route);
             },
             child: Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 image: DecorationImage(image: AssetImage("assets/images/flags/spanien.png"), fit: BoxFit.fill),
               ),
               child: SizedBox(
@@ -304,19 +304,19 @@ Widget Competitions(context){
                 child: Container(
                   width: 200,
                   height: 70,
-                  color: Color.fromARGB(150, 0, 0, 0),
+                  color: const Color.fromARGB(150, 0, 0, 0),
                   child: Center(child: Text("La Liga", style: style)),
                 )
               ),
             ),
           ),
-          SizedBox(height: 35),
+          const SizedBox(height: 35),
           TextButton(
             onPressed: (){
               openPage(context, Serie_A.route);
             },
             child: Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 image: DecorationImage(image: AssetImage("assets/images/flags/italien.png"), fit: BoxFit.fill),
               ),
               child: SizedBox(
@@ -325,19 +325,19 @@ Widget Competitions(context){
                 child: Container(
                   width: 200,
                   height: 70,
-                  color: Color.fromARGB(150, 0, 0, 0),
+                  color: const Color.fromARGB(150, 0, 0, 0),
                   child: Center(child: Text("Serie A", style: style)),
                 )
               ),
             ),
           ),
-          SizedBox(height: 35),
+          const SizedBox(height: 35),
           TextButton(
             onPressed: (){
               openPage(context, Ligue_1.route);
             },
             child: Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 image: DecorationImage(image: AssetImage("assets/images/flags/frankreich.png"), fit: BoxFit.fill),
               ),
               child: SizedBox(
@@ -346,7 +346,7 @@ Widget Competitions(context){
                 child: Container(
                   width: 200,
                   height: 70,
-                  color: Color.fromARGB(150, 0, 0, 0),
+                  color: const Color.fromARGB(150, 0, 0, 0),
                   child: Center(child: Text("Ligue 1", style: style)),
                 )
               ),
@@ -360,5 +360,5 @@ Widget Competitions(context){
 
 void scrollTo(GlobalKey key) {
   final targetContext = key.currentContext;
-  Scrollable.ensureVisible(targetContext!, duration: Duration(seconds: 1));
+  Scrollable.ensureVisible(targetContext!, duration: const Duration(seconds: 1));
 }

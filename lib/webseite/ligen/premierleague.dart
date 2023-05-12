@@ -1,25 +1,25 @@
 import 'dart:convert';
-import 'package:beautiful_soup_dart/beautiful_soup.dart';
-import 'spieltag.dart';
+import 'package:cnppredictions/webseite/spieltag.dart';
 import 'package:flutter/material.dart';
 import 'package:requests/requests.dart';
 import 'liga.dart';
 
-class Serie_A extends Liga {
-  const Serie_A({super.key});
-  static const String route = "/serie-a";
+class PremierLeague extends Liga {
+  const PremierLeague({super.key});
+  static const String route = "/premierleague";
 
   @override
-  State<Serie_A> createState() => _Serie_AState();
+  State<PremierLeague> createState() => _PremierLeagueState();
 
+  @override
   Future<int> getAktuellenSpieltag() async {
     final response = await Requests.get(
-        "https://proxy.cnp-predictions.de/get.php?url=${Uri.encodeFull("https://api.football-data.org/v4/competitions/SA")}",
+        "https://proxy.cnp-predictions.de/get.php?url=${Uri.encodeFull("https://api.football-data.org/v4/competitions/PL")}",
         headers: {"Access-Control-Allow-Origin": "*"});
-    if (response.statusCode == 200) {
+  if (response.statusCode == 200) {
       // Parse JSON data and return a list of FootballResults
       Map<String, dynamic> data = jsonDecode(response.body);
-
+      
       int aktuellerSpieltag = data["currentSeason"]["currentMatchday"];
 
       return aktuellerSpieltag;
@@ -30,9 +30,9 @@ class Serie_A extends Liga {
   }
 }
 
-class _Serie_AState extends State<Serie_A> {
+class _PremierLeagueState extends State<PremierLeague> {
   @override
   Widget build(BuildContext context) {
-    return Container(child: Spieltag2(leagueID: 'SA', league: Serie_A()));
+    return Spieltag2(leagueID: 'PL', league: const PremierLeague());
   }
 }

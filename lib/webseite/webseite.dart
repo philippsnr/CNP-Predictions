@@ -1,14 +1,12 @@
-import 'package:cnppredictions/webseite/bundesliga.dart';
-import 'package:cnppredictions/webseite/la_liga.dart';
-import 'package:cnppredictions/webseite/ligue_1.dart';
-import 'package:cnppredictions/webseite/premierleague.dart';
-import 'package:cnppredictions/webseite/serie_a.dart';
+import 'ligen/bundesliga.dart';
+import 'ligen/premierleague.dart';
+import 'ligen/serie_a.dart';
+import 'ligen/ligue_1.dart';
+import 'ligen/la_liga.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'startseite.dart';
 import 'datenschutzseite.dart';
 import 'impressumseite.dart';
-import 'package:get/get.dart';
 
 Future<void> runWebseite() async {
   runApp(const BLPrediction());
@@ -56,7 +54,7 @@ AppBar getAppbar(context) {
 
 AppBar getAppbarPC(context) {
   TextStyle style =
-      TextStyle(color: Color.fromARGB(255, 183, 111, 250), fontSize: 18);
+      const TextStyle(color: Color.fromARGB(255, 183, 111, 250), fontSize: 18);
   return AppBar(
     toolbarHeight: 56,
     automaticallyImplyLeading: false,
@@ -81,37 +79,37 @@ AppBar getAppbarPC(context) {
             openPage(context, Startseite.route);
           },
           child: Text("Home", style: style)),
-      SizedBox(width: 20),
+      const SizedBox(width: 20),
       TextButton(
           onPressed: () {
             openPage(context, Bundesliga.route);
           },
           child: Text("Bundesliga", style: style)),
-      SizedBox(width: 20),
+      const SizedBox(width: 20),
       TextButton(
           onPressed: () {
             openPage(context, PremierLeague.route);
           },
           child: Text("Premier League", style: style)),
-      SizedBox(width: 20),
+      const SizedBox(width: 20),
       TextButton(
           onPressed: () {
             openPage(context, La_Liga.route);
           },
           child: Text("La Liga", style: style)),
-      SizedBox(width: 20),
+      const SizedBox(width: 20),
       TextButton(
           onPressed: () {
             openPage(context, Serie_A.route);
           },
           child: Text("Serie A", style: style)),
-      SizedBox(width: 20),
+      const SizedBox(width: 20),
       TextButton(
           onPressed: () {
             openPage(context, Ligue_1.route);
           },
           child: Text("Ligue 1", style: style)),
-      SizedBox(width: 20),
+      const SizedBox(width: 20),
       TextButton(
           onPressed: () {
             openPage(context, Impressumseite.route);
@@ -122,8 +120,6 @@ AppBar getAppbarPC(context) {
 }
 
 AppBar getAppbarHandy(context) {
-  TextStyle style =
-      TextStyle(color: Color.fromARGB(255, 183, 111, 250), fontSize: 18);
   return AppBar(
     automaticallyImplyLeading: false,
     backgroundColor: Colors.black,

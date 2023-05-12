@@ -1,6 +1,7 @@
+// ignore_for_file: camel_case_types
+
 import 'dart:convert';
-import 'package:beautiful_soup_dart/beautiful_soup.dart';
-import 'spieltag.dart';
+import 'package:cnppredictions/webseite/spieltag.dart';
 import 'package:flutter/material.dart';
 import 'package:requests/requests.dart';
 import 'liga.dart';
@@ -12,6 +13,7 @@ class La_Liga extends Liga {
   @override
   State<La_Liga> createState() => _La_LigaState();
 
+  @override
   Future<int> getAktuellenSpieltag() async {
     final response = await Requests.get(
         "https://proxy.cnp-predictions.de/get.php?url=${Uri.encodeFull("https://api.football-data.org/v4/competitions/PD")}",
@@ -33,6 +35,6 @@ class La_Liga extends Liga {
 class _La_LigaState extends State<La_Liga> {
   @override
   Widget build(BuildContext context) {
-    return Container(child: Spieltag2(leagueID: 'PD', league: La_Liga()));
+    return Spieltag2(leagueID: 'PD', league: const La_Liga());
   }
 }

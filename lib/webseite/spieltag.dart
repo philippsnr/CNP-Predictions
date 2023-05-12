@@ -1,12 +1,13 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:getwidget/components/loader/gf_loader.dart';
 import 'package:getwidget/types/gf_loader_type.dart';
 import 'package:requests/requests.dart';
 import 'spiel.dart';
 import 'dart:convert';
-import 'package:beautiful_soup_dart/beautiful_soup.dart';
 import 'webseite.dart';
-import 'liga.dart';
+import 'ligen/liga.dart';
 
 class Spieltag2 extends StatelessWidget {
   double fontsize = 15;
@@ -15,7 +16,7 @@ class Spieltag2 extends StatelessWidget {
   String leagueID;
   Liga league;
 
-  Spieltag2({
+  Spieltag2({super.key, 
     required this.leagueID,
     required this.league,
     });
@@ -48,7 +49,7 @@ class Spieltag2 extends StatelessWidget {
                           width: deviceWidth,
                           height: deviceHeight,
                           color: const Color.fromARGB(215, 0, 0, 0),
-                          child: const GFLoader(type: GFLoaderType.android),
+                          child: const GFLoader(type: GFLoaderType.android, androidLoaderColor: AlwaysStoppedAnimation<Color>(Color.fromARGB(255, 84, 17, 145))),
                         ));
                       default:
                         if (snapshot.hasError) {
