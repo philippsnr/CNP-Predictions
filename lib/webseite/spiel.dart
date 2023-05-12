@@ -88,7 +88,7 @@ class _SpielState extends State<Spiel> {
               disabledColor: Color.fromARGB(255, 84, 17, 145),
               onPressed: null,
               child: SizedBox(
-                width: 180,
+                width: 100,
                 height: 20,
                 child: Center(child: Text("Ergebnis", style: textStyle)),
               )),
@@ -108,7 +108,7 @@ class _SpielState extends State<Spiel> {
                 });
               },
               child: SizedBox(
-                width: 180,
+                width: 100,
                 height: 20,
                 child:
                     Center(child: Text("Analyse", style: textStyle)),
@@ -139,7 +139,7 @@ class _SpielState extends State<Spiel> {
                         disabledColor: Color.fromARGB(255, 84, 17, 145),
                         onPressed: null,
                         child: SizedBox(
-                          width: 180,
+                          width: 100,
                           height: 20,
                           child: Center(
                               child: Text("Vorhersage", style: textStyle)),
@@ -161,58 +161,31 @@ class _SpielState extends State<Spiel> {
               disabledColor: Colors.purple,
               onPressed: null,
               child: SizedBox(
-                width: 180,
+                width: 100,
                 height: 20,
                 child: Center(child: Text("Vorhersage", style: textStyle)),
               )),
         ],
       );
     }
-    
-    Color defaultColor = const Color.fromARGB(0, 0, 0, 0);
-    /*
-    Color leftColor = teamColors[widget.homeTeam]!;
-    leftColor = leftColor.withAlpha(175);
-    Color rightColor;
-    if (colorNames[widget.homeTeam] != colorNames[widget.awayTeam]) {
-      rightColor = teamColors[widget.awayTeam]!;
-    } else {
-      rightColor = secondColors[widget.awayTeam]!;
-    }
-    rightColor = rightColor.withAlpha(175);
-    */
 
     if(deviceWidth > 1000){
-      return getPCLayout(defaultColor, defaultColor, defaultColor, middle);
+      return getPCLayout(middle);
     }
     else{
-      return getHandyLayout(defaultColor, defaultColor, defaultColor, middle);
+      return getHandyLayout(middle);
     }
     
   }
 
-  Container getPCLayout(defaultColor, leftColor, rightColor, middle){
+  Container getPCLayout(middle){
     return Container(
-      decoration: BoxDecoration(
-          gradient: LinearGradient(
-        begin: Alignment.centerLeft,
-        end: Alignment.centerRight,
-        colors: [
-          defaultColor,
-          leftColor,
-          leftColor,
-          rightColor,
-          rightColor,
-          defaultColor
-        ],
-        stops: const [0.15, 0.2, 0.3, 0.7, 0.8, 0.85],
-      )),
       child: SizedBox(
         height: 60,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset("assets/images/prem/${teamTrikots[widget.homeTeam]}.png"),
+            Image.asset("assets/images/trikots/${teamTrikots[widget.homeTeam]}.png"),
             const SizedBox(width: 75),
             SizedBox(
                 width: 250,
@@ -232,53 +205,37 @@ class _SpielState extends State<Spiel> {
                   textAlign: TextAlign.right,
                 )),
             const SizedBox(width: 75),
-            Image.asset("assets/images/prem/${teamTrikots[widget.awayTeam]}.png"),
+            Image.asset("assets/images/trikots/${teamTrikots[widget.awayTeam]}.png"),
           ],
         ),
       ),
     );
   }
 
-  Container getHandyLayout(defaultColor, leftColor, rightColor, middle){
+  Container getHandyLayout(middle){
     return Container(
-      decoration: BoxDecoration(
-          gradient: LinearGradient(
-        begin: Alignment.centerLeft,
-        end: Alignment.centerRight,
-        colors: [
-          leftColor,
-          leftColor,
-          rightColor,
-          rightColor,
+      child: Column(
+        children: [
+          Text(
+            "${widget.homeTeam} - ${widget.awayTeam}",
+            style: const TextStyle(color: Colors.white, fontSize: 15),
+          ),
+          SizedBox(height: 15),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(
+                width: 40,
+                child: Image.asset("assets/images/prem/${teamTrikots[widget.homeTeam]}.png")
+              ),
+              middle,
+              SizedBox(
+                width: 40,
+                child: Image.asset("assets/images/prem/${teamTrikots[widget.awayTeam]}.png")
+              ),
+            ],
+          )
         ],
-        stops: const [0.2, 0.3, 0.7, 0.8],
-      )),
-      child: SizedBox(
-        height: 60,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(width: 0.02 * deviceWidth),
-            SizedBox(
-                width: 0.2 * deviceWidth,
-                child: Text(
-                  widget.homeTeam,
-                  style: const TextStyle(color: Colors.white, fontSize: 15),
-                  textAlign: TextAlign.left,
-                )),
-            SizedBox(width: 0.02 * deviceWidth),
-            SizedBox(width: 0.3 * 400, child: middle),
-            SizedBox(width: 0.02 * deviceWidth),
-            SizedBox(
-                width: 0.2 * deviceWidth,
-                child: Text(
-                  widget.awayTeam,
-                  style: const TextStyle(color: Colors.white, fontSize: 15),
-                  textAlign: TextAlign.right,
-                )),
-            SizedBox(width: 0.02 * deviceWidth),
-          ],
-        ),
       ),
     );
   }
