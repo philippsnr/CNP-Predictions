@@ -1,5 +1,5 @@
 import 'ligen/bundesliga.dart';
-import 'ligen/premierleague.dart';
+import 'ligen/premier_league.dart';
 import 'ligen/serie_a.dart';
 import 'ligen/ligue_1.dart';
 import 'ligen/la_liga.dart';
@@ -33,7 +33,7 @@ class _BLPredictionState extends State<BLPrediction> {
         Impressumseite.route: (context) => const Impressumseite(),
         Datenschutzseite.route:(context) => const Datenschutzseite(),
         Bundesliga.route:(context) => const Bundesliga(),
-        PremierLeague.route:(context) => const PremierLeague(),
+        Premier_League.route:(context) => const Premier_League(),
         Serie_A.route: (context) => const Serie_A(),
         La_Liga.route:(context) => const La_Liga(),
         Ligue_1.route:(context) => const Ligue_1(),
@@ -88,7 +88,7 @@ AppBar getAppbarPC(context) {
       const SizedBox(width: 20),
       TextButton(
           onPressed: () {
-            openPage(context, PremierLeague.route);
+            openPage(context, Premier_League.route);
           },
           child: Text("Premier League", style: style)),
       const SizedBox(width: 20),

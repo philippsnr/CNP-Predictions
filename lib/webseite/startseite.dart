@@ -1,7 +1,6 @@
 // ignore_for_file: non_constant_identifier_names
-
 import 'ligen/bundesliga.dart';
-import 'ligen/premierleague.dart';
+import 'ligen/premier_league.dart';
 import 'ligen/serie_a.dart';
 import 'ligen/ligue_1.dart';
 import 'ligen/la_liga.dart';
@@ -271,7 +270,7 @@ Widget Competitions(context){
           const SizedBox(height: 35),
           TextButton(
             onPressed: (){
-              openPage(context, PremierLeague.route);
+              openPage(context, Premier_League.route);
             },
             child: Container(
               decoration: const BoxDecoration(
