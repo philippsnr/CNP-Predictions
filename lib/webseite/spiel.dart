@@ -84,6 +84,7 @@ class _SpielState extends State<Spiel> {
           Text("${widget.homeScore} : ${widget.awayScore}", style: textStyle),
           const SizedBox(height: 5),
           MaterialButton(
+            padding: const EdgeInsets.all(0),
               disabledColor: const Color.fromARGB(255, 84, 17, 145),
               onPressed: null,
               child: SizedBox(
@@ -158,6 +159,7 @@ class _SpielState extends State<Spiel> {
           Text("${widget.homeScore} : ${widget.awayScore}", style: textStyle),
           const SizedBox(height: 5),
           MaterialButton(
+            padding: const EdgeInsets.all(0),
               disabledColor: Colors.purple,
               onPressed: null,
               child: SizedBox(
