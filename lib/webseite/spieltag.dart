@@ -1,5 +1,6 @@
 // ignore_for_file: must_be_immutable
 
+import 'datenbank.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/components/loader/gf_loader.dart';
 import 'package:getwidget/types/gf_loader_type.dart';
@@ -39,7 +40,7 @@ class Spieltag2 extends StatelessWidget {
           child: Center(
             child: SingleChildScrollView(
               child: FutureBuilder(
-                  future: getSpiele(),
+                  future: getSpiele2("Bundesliga" ,"2022-2023", 32),
                   builder: (BuildContext context, AsyncSnapshot snapshot) {
                     switch (snapshot.connectionState) {
                       case ConnectionState.none:
@@ -128,4 +129,27 @@ class Spieltag2 extends StatelessWidget {
       throw Exception('Failed to fetch football results');
     }
   }
+
+  Future<List<Spiel>> getSpiele2(String liga, String Saison, int Spieltag) async{
+
+    aktuellerSpieltag = Spieltag;
+
+    String sql = "Select * from $liga where Saison = '$Saison' and Spieltag = $Spieltag";
+    
+    String jsonSpiele = await query2(sql);
+
+    dynamic spieleListe = jsonDecode(jsonSpiele);
+
+
+    List<Spiel> spiele = [];
+
+    for(var spiel in spieleListe){
+      print(spiel["Spieltag"]);
+      spiele.add(Spiel.fromJson(spiel));
+    }
+    //spiele.sort((a, b) => a.date.compareTo(b.date));
+
+    return spiele;
+  }
+
 }

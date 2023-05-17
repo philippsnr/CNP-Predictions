@@ -9,22 +9,20 @@ import 'package:tuple/tuple.dart';
 
 class Spiel extends StatefulWidget {
   String homeTeam;
-  int homeId;
   String awayTeam;
-  int awayId;
   int homeScore;
   int awayScore;
-  DateTime date;
+  //DateTime date;
+  String date;
   String status;
   int spieltag;
 
   Spiel({super.key, 
     required this.homeTeam,
-    required this.homeId,
     required this.awayTeam,
-    required this.awayId,
     required this.homeScore,
     required this.awayScore,
+    //required this.date,
     required this.date,
     required this.status,
     required this.spieltag,
@@ -32,20 +30,20 @@ class Spiel extends StatefulWidget {
 
   factory Spiel.fromJson(Map<String, dynamic> json) {
     return Spiel(
-      homeTeam: json['homeTeam']['name'] ?? '',
-      homeId: json['homeTeam']['id'],
-      awayTeam: json['awayTeam']['name'] ?? '',
-      awayId: json['awayTeam']['id'],
-      homeScore: json['score']['fullTime']['home'] ?? 0,
-      awayScore: json['score']['fullTime']['away'] ?? 0,
-      date: DateTime.parse(json['utcDate']),
-      status: json['status'] ?? '',
-      spieltag: json["matchday"] ?? '',
+      homeTeam: json['HomeTeam'],
+      awayTeam: json['AwayTeam'],
+      homeScore: int.parse(json['FTHG']),
+      awayScore: int.parse(json['FTAG']),
+      //date: DateTime.parse(json['utcDate']),
+      date: json["Date"],
+      status: "FINISHED",
+      spieltag: int.parse(json["Spieltag"]),
     );
   }
 
   String get formattedDate {
-    return DateFormat('dd.MM.yyyy HH:mm').format(date);
+    //return DateFormat('dd.MM.yyyy HH:mm').format(date);
+    return "01.01.2023 00:00";
   }
 
   String get Uhrzeit {
