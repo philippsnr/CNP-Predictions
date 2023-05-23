@@ -136,7 +136,7 @@ class Spieltag2 extends StatelessWidget {
 
     String sql = "Select * from $liga where Saison = '$Saison' and Spieltag = $Spieltag";
     
-    String jsonSpiele = await query2(sql);
+    String jsonSpiele = await query(sql);
 
     dynamic spieleListe = jsonDecode(jsonSpiele);
 
@@ -144,7 +144,6 @@ class Spieltag2 extends StatelessWidget {
     List<Spiel> spiele = [];
 
     for(var spiel in spieleListe){
-      print(spiel["Spieltag"]);
       spiele.add(Spiel.fromJson(spiel));
     }
     //spiele.sort((a, b) => a.date.compareTo(b.date));

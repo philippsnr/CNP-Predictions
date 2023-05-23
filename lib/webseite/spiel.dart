@@ -1,4 +1,8 @@
 // ignore_for_file: non_constant_identifier_names, must_be_immutable
+import 'dart:convert';
+
+import 'package:cnppredictions/webseite/datenbank.dart';
+
 import 'trikots.dart';
 import 'webseite.dart';
 import 'package:flutter/material.dart';
@@ -8,42 +12,51 @@ import 'package:cnppredictions/predictions/vorhersage.dart';
 import 'package:tuple/tuple.dart';
 
 class Spiel extends StatefulWidget {
+  String ID;
   String homeTeam;
   String awayTeam;
   int homeScore;
   int awayScore;
-  //DateTime date;
-  String date;
+  DateTime date;
   String status;
   int spieltag;
 
   Spiel({super.key, 
+  required this.ID,
     required this.homeTeam,
     required this.awayTeam,
     required this.homeScore,
     required this.awayScore,
-    //required this.date,
     required this.date,
     required this.status,
     required this.spieltag,
   });
 
   factory Spiel.fromJson(Map<String, dynamic> json) {
+    DateTime now = DateTime.now();
+    String formattedDate = (json['Date'] + " " + json['Time']).replaceAll("/", "-");
+    DateTime gameDate = DateFormat("dd-MM-yyyy hh:mm").parse(formattedDate);
+    String status;
+    if(now.isBefore(gameDate)){
+      status = "TIMED";
+    }
+    else{
+      status = "TIMED";
+    }
     return Spiel(
+      ID: json['ID'],
       homeTeam: json['HomeTeam'],
       awayTeam: json['AwayTeam'],
       homeScore: int.parse(json['FTHG']),
       awayScore: int.parse(json['FTAG']),
-      //date: DateTime.parse(json['utcDate']),
-      date: json["Date"],
-      status: "FINISHED",
+      date: gameDate,
+      status: status,
       spieltag: int.parse(json["Spieltag"]),
     );
   }
 
   String get formattedDate {
-    //return DateFormat('dd.MM.yyyy HH:mm').format(date);
-    return "01.01.2023 00:00";
+    return DateFormat('dd.MM.yyyy HH:mm').format(date);
   }
 
   String get Uhrzeit {
@@ -54,9 +67,13 @@ class Spiel extends StatefulWidget {
   }
 
   Future<Widget> analyse(int spieltag) async {
-    Tuple2<int, int> diff = await getPrediction(homeTeam, awayTeam, spieltag);
-    homeScore = diff.item1;
-    awayScore = diff.item2;
+    String sql = "Select Prediction from Predictions where ID = '$ID';";
+    String result = await query(sql);
+    dynamic JSONprediction = jsonDecode(result);
+    String prediction = JSONprediction[0]["Prediction"];
+    List<String> scores = prediction.split(":");
+    homeScore = int.parse(scores[0]);
+    awayScore = int.parse(scores[1]);
     status = "PREDICTED";
     return Text(
       "$homeScore : $awayScore",
