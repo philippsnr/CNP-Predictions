@@ -9,27 +9,13 @@ import 'liga.dart';
 class Premier_League extends Liga {
   const Premier_League({super.key});
   static const String route = "/premier-league";
+  
+  @override
+  final String name = "England";
 
   @override
   State<Premier_League> createState() => _Premier_LeagueState();
 
-  @override
-  Future<int> getAktuellenSpieltag() async {
-    final response = await Requests.get(
-        "https://proxy.cnp-predictions.de/get.php?url=${Uri.encodeFull("https://api.football-data.org/v4/competitions/PL")}",
-        headers: {"Access-Control-Allow-Origin": "*"});
-  if (response.statusCode == 200) {
-      // Parse JSON data and return a list of FootballResults
-      Map<String, dynamic> data = jsonDecode(response.body);
-      
-      int aktuellerSpieltag = data["currentSeason"]["currentMatchday"];
-
-      return aktuellerSpieltag;
-    } else {
-      // Handle error
-      throw Exception('Failed to fetch current matchday results');
-    }
-  }
 }
 
 class _Premier_LeagueState extends State<Premier_League> {

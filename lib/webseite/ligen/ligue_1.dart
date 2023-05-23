@@ -9,6 +9,9 @@ import 'liga.dart';
 class Ligue_1 extends Liga {
   const Ligue_1({super.key});
   static const String route = "/ligue-1";
+  
+  @override
+  final String name = "Frankreich";
 
   @override
   State<Ligue_1> createState() => _Ligue_1State();

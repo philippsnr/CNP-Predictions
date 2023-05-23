@@ -40,7 +40,7 @@ class Spieltag2 extends StatelessWidget {
           child: Center(
             child: SingleChildScrollView(
               child: FutureBuilder(
-                  future: getSpiele2("Bundesliga" ,"2022-2023", 32),
+                  future: getSpiele2(league,"2022-2023"),
                   builder: (BuildContext context, AsyncSnapshot snapshot) {
                     switch (snapshot.connectionState) {
                       case ConnectionState.none:
@@ -130,11 +130,11 @@ class Spieltag2 extends StatelessWidget {
     }
   }
 
-  Future<List<Spiel>> getSpiele2(String liga, String Saison, int Spieltag) async{
+  Future<List<Spiel>> getSpiele2(Liga liga, String Saison) async{
 
-    aktuellerSpieltag = Spieltag;
+    aktuellerSpieltag = await liga.getAktuellenSpieltag();
 
-    String sql = "Select * from $liga where Saison = '$Saison' and Spieltag = $Spieltag";
+    String sql = "Select * from ${liga.name} where Saison = '$Saison' and Spieltag = $aktuellerSpieltag";
     
     String jsonSpiele = await query(sql);
 

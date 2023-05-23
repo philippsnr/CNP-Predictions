@@ -11,6 +11,9 @@ class Serie_A extends Liga {
   static const String route = "/serie-a";
 
   @override
+  final String name = "Italien";
+
+  @override
   State<Serie_A> createState() => _Serie_AState();
 
   @override
