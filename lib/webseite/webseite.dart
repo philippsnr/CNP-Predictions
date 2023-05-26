@@ -1,3 +1,5 @@
+import 'package:cnppredictions/webseite/wartungspause.dart';
+
 import 'ligen/bundesliga.dart';
 import 'ligen/premier_league.dart';
 import 'ligen/serie_a.dart';
@@ -28,7 +30,9 @@ class _BLPredictionState extends State<BLPrediction> {
   Widget build(BuildContext context) {
     return MaterialApp(
       initialRoute: Startseite.route,
+      //initialRoute: Wartungspause.route,
       routes: {
+        //Wartungspause.route:(context) => const Wartungspause(),
         Startseite.route: (context) => const Startseite(),
         Impressumseite.route: (context) => const Impressumseite(),
         Datenschutzseite.route:(context) => const Datenschutzseite(),

@@ -1,4 +1,6 @@
 
+import 'package:cnppredictions/webseite/wartungspause.dart';
+
 const starttext = """
 
 <h1 style="text-align: center;"><span style="color: #ffffff;">CNP-Predictions</span></h1><h3 style="text-align: center;"><span style="color: #ffffff;">Football predictions based on AI</span></h3>
@@ -69,4 +71,13 @@ const datenschutzErklaerung = """
 <p style="text-align: center;"><span style="color: #ffffff;">N&auml;heres zu den Verarbeitungst&auml;tigkeiten, deren Unterbindung und zur L&ouml;schung der von Instagram verarbeiteten Daten finden sich in der Datenrichtlinie von Instagram:</span></p>
 <p style="text-align: center;"><span style="color: #ffffff;"><a style="color: #ffffff;" href="https://help.instagram.com/519522125107875" target="_blank" rel="noopener nofollow" data-saferedirecturl="https://www.google.com/url?q=https://help.instagram.com/519522125107875&amp;source=gmail&amp;ust=1681753599018000&amp;usg=AOvVaw15qr1IPmBpe-wqQSFguPZ0">https://help.instagram.com/<wbr />519522125107875</a></span></p>
 <p style="text-align: center;"><span style="color: #ffffff;">Es ist nicht ausgeschlossen, dass die Verarbeitung durch die Facebook Ireland Ltd. auch &uuml;ber die Meta Platforms, Inc., 1601 Willow Road, Menlo Park, California 94025 in den USA erfolgt.</span></p>
+""";
+
+const wartungspauseText = """
+
+<hr style="height:2px;border-width:0;color:gray;background-color:gray">
+<h1 style="text-align: center;"><span style="color: #ffffff;">maintenance break</span></h1>
+<h2 style="text-align: center;"><span style="color: #ffffff;">We will be back next season</span></h2>
+<hr style="height:2px;border-width:0;color:gray;background-color:gray">
+
 """;
